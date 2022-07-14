@@ -1,0 +1,31 @@
+.table {
+  text-align: center;
+  margin: 0 auto;
+  background-color: white;
+  box-shadow: 0 0 8px rbga(0, 0, 0, 0.1);
+
+  &__header {
+    color: var(--primary);
+
+    &__content {
+      padding: 10px;
+      border-bottom: 2px solid var(--secondary);
+    }
+  }
+
+  &__row {
+    margin-bottom: 10px;
+    border-radius: 4px;
+
+    &:last-child {
+      .table__content {
+        border-bottom: none;
+      }
+    }
+  }
+
+  &__content {
+    padding: 10px;
+    border-bottom: 1px solid var(--secondary);
+  }
+}
