@@ -1,0 +1,18 @@
+<h4 class="text-2xl text-purple-600 mb-4">Login</h4>
+
+<form class="w-full max-w-2xl flex flex-col space-y-5" (ngSubmit)="login()">
+  <div class="rounded px-3 py-2 bg-gray-300 flex flex-col">
+    <input class="bg-transparent outline-none text-lg placeholder:text-purple-400" id="username" type="text"
+      name="username" placeholder="Nome do usuário" [(ngModel)]="username" #userField="ngModel" required />
+    <app-message *ngIf="userField.invalid && userField.touched" message="Campo obrigatório!"></app-message>
+  </div>
+
+  <div class="rounded px-3 py-2 bg-gray-300 flex flex-col">
+    <input class="bg-transparent outline-none text-lg placeholder:text-purple-400" id="password" type="password"
+      name="password" placeholder="Senha" [(ngModel)]="password" #passwordField="ngModel" required />
+    <app-message *ngIf="passwordField.invalid && passwordField.touched" message="Campo obrigatório!"></app-message>
+  </div>
+
+  <button type="submit" [disabled]="userField.invalid || passwordField.invalid"
+    class=" disabled:opacity-70 disabled:cursor-not-allowed flex-1 flex items-center justify-center bg-purple-700 py-2 rounded text-white hover:bg-purple-500 transition-colors">Entrar</button>
+</form>
