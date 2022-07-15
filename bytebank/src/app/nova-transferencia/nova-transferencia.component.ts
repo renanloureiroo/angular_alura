@@ -1,3 +1,4 @@
+import { TransferService } from './../services/transfer.service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
@@ -6,26 +7,31 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./nova-transferencia.component.scss'],
 })
 export class NovaTransferenciaComponent {
-  @Output() onTransfer = new EventEmitter<any>();
-
   value: number;
-  destiny: number;
+  destiny: string;
 
-  constructor() {}
+  constructor(private service: TransferService) {}
 
   transfer(): void {
-    console.log('Solicitada nova transferência.');
-    this.onTransfer.emit({
-      value: this.value,
-      destiny: this.destiny,
-      date: new Date(),
-    });
-
-    this.clearFields();
+    this.service
+      .add({
+        value: this.value,
+        destiny: this.destiny,
+        date: new Date(),
+      })
+      .subscribe(
+        (resultado) => {
+          console.log(resultado);
+          this.clearFields();
+        },
+        (err) => {
+          console.error(err);
+        }
+      );
   }
 
   clearFields() {
     this.value = 0;
-    this.destiny = 0;
+    this.destiny = '';
   }
 }

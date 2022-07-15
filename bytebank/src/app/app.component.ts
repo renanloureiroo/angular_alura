@@ -1,10 +1,5 @@
+import { TransferService } from './services/transfer.service';
 import { Component } from '@angular/core';
-
-interface ITransferData {
-  value: number;
-  destiny: number;
-  date: string;
-}
 
 @Component({
   selector: 'app-root',
@@ -14,11 +9,5 @@ interface ITransferData {
 export class AppComponent {
   title = 'bytebank';
 
-  transfers: ITransferData[] = [];
-
-  transfer($event) {
-    console.log($event);
-
-    this.transfers.push($event);
-  }
+  constructor(private service: TransferService) {}
 }

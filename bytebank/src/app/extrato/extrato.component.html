@@ -5,7 +5,7 @@
     <th class="table__header__content">Destino</th>
   </thead>
 
-  <tbody>
+  <tbody *ngIf="transfers.length > 0; else voidList">
     <tr *ngFor="let item of transfers" class="table__row">
       <td class="table__content">
         {{item.value | currency}}
@@ -21,3 +21,7 @@
     </tr>
   </tbody>
 </table>
+
+<ng-template #voidList>
+  <p>Nenhuma operação cadastrada</p>
+</ng-template>
