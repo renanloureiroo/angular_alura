@@ -1,6 +1,6 @@
 <h4 class="text-2xl text-purple-600 mb-4">Login</h4>
 
-<form class="w-full max-w-2xl flex flex-col space-y-5" (ngSubmit)="login()">
+<form class="w-full max-w-2xl flex flex-col space-y-5" #loginForm="ngForm" (ngSubmit)="login()">
   <div class="rounded px-3 py-2 bg-gray-300 flex flex-col">
     <input class="bg-transparent outline-none text-lg placeholder:text-purple-400" id="username" type="text"
       name="username" placeholder="Nome do usuário" [(ngModel)]="username" #userField="ngModel" required />
@@ -13,6 +13,11 @@
     <app-message *ngIf="passwordField.invalid && passwordField.touched" message="Campo obrigatório!"></app-message>
   </div>
 
-  <button type="submit" [disabled]="userField.invalid || passwordField.invalid"
-    class=" disabled:opacity-70 disabled:cursor-not-allowed flex-1 flex items-center justify-center bg-purple-700 py-2 rounded text-white hover:bg-purple-500 transition-colors">Entrar</button>
+  <button type="submit" [disabled]="loginForm.invalid"
+    class=" disabled:opacity-70 disabled:cursor-not-allowed flex-1 flex items-center justify-center bg-purple-700 py-2 rounded text-white hover:bg-purple-500 transition-colors">
+    Entrar
+  </button>
 </form>
+
+<p class="text-purple-400 mt-4">Ainda não tem uma conta? Registre-se <a
+    class="underline underline-offset-2 text-purple-300" [routerLink]="['signup']">aqui!</a> </p>
