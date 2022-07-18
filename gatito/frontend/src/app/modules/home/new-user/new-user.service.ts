@@ -11,15 +11,10 @@ export class NewUserService {
   url: string = 'http://localhost:3000/user';
   constructor(private httpClient: HttpClient) {}
 
-  signUp({ email, fullName, password, userName }: INewUser): Observable<any> {
-    return this.httpClient.post(`${this.url}/signup`, {
-      email,
-      fullName,
-      userName,
-      password,
-    });
+  signUp(newUser: INewUser): Observable<any> {
+    return this.httpClient.post(`http://localhost:3000/user/signup`, newUser);
   }
-  userNameExists(userName: string): Observable<any> {
-    return this.httpClient.get(`${this.url}/exists/${userName}`);
+  verifyUserNameExists(userName: string): Observable<any> {
+    return this.httpClient.get(`http://localhost:3000/user/exists/${userName}`);
   }
 }

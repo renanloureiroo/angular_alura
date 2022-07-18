@@ -27,14 +27,21 @@
     message="Usuário deve ser em letra minúscula!">
   </app-message>
 
+  <app-message *ngIf="newUserForm.get('userName')?.errors?.['userExists'] && newUserForm.get('userName')?.touched"
+    message="Nome de usuário indisponível!">
+  </app-message>
+
   <!-- Input senha -->
   <div class="rounded px-3 py-2 bg-gray-300 flex flex-col">
     <input class="bg-transparent outline-none text-lg placeholder:text-purple-400" type="password" placeholder="Senha"
       formControlName="password" />
   </div>
-  <app-message message="Senha obrigatória!"></app-message>
+  <app-message *ngIf="newUserForm.get('password')?.errors?.['password'] && newUserForm.get('password')?.touched"
+    message="Senha obrigatória!"></app-message>
+  <app-message *ngIf="newUserForm.errors?.['passwordEqualUsername']" message="Usuário e senha devem ser diferentes!">
+  </app-message>
 
-  <button type=" submit"
+  <button type="submit"
     class=" disabled:opacity-70 disabled:cursor-not-allowed flex-1 flex items-center justify-center bg-purple-700 py-2 rounded text-white hover:bg-purple-500 transition-colors">
     Cadastro
   </button>

@@ -1,0 +1,19 @@
+<header class="w-full h-24 bg-purple-500 shadow-lg text-purple-50">
+  <nav class="flex h-24 items-center justify-between p-3">
+    <a class="text-2xl" href="#">Gatito book</a>
+    <div *ngIf="user$ | async as user">
+      <div *ngIf="user.name; else login">
+        <a>{{user.name}}</a>
+
+        <button (click)="logout" class="rounded px-3 py-2">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <ng-template #login>
+
+    <a class="px-3 py-2 rounded bg-purple-50 text-xl text-purple-500 border-spacing-1 border-purple-700 hover:bg-purple-800 hover:text-purple-50 transition-colors"
+      [routerLink]="['']">Login</a>
+
+  </ng-template>
+</header>
