@@ -1,3 +1,5 @@
+import { DetailsAnimalComponent } from './details-animal/details-animal.component';
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -7,6 +9,10 @@ const routes: Routes = [
   {
     path: '',
     component: ListAnimalsComponent,
+  },
+  {
+    path: ':id',
+    component: DetailsAnimalComponent,
   },
 ];
 

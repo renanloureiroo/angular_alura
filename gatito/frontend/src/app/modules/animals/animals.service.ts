@@ -1,9 +1,11 @@
+import { environment } from './../../../environments/environment';
 import { TokenService } from './../authenticate/token.service';
-import { Animals } from './animals';
+import { Animal, Animals } from './animals';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-const API = 'http://localhost:3000';
+
+const API = environment.apiURL;
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +20,15 @@ export class AnimalsService {
     const token = this.tokenService.getAccessToken();
     const headers = new HttpHeaders().append('x-access-token', token);
     return this.httpClient.get<Animals>(`${API}/${userName}/photos`, {
+      headers,
+    });
+  }
+
+  getById(id: number): Observable<Animal> {
+    const token = this.tokenService.getAccessToken();
+    const headers = new HttpHeaders().append('x-access-token', token);
+
+    return this.httpClient.get<Animal>(`${API}/photos/${id}`, {
       headers,
     });
   }

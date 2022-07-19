@@ -1,0 +1,9 @@
+<div *ngIf="animal$ | async as animal">
+  <div class="w-full px-4 flex items-center justify-center">
+    <app-animal [url]="animal.url" [description]="animal.description"></app-animal>
+  </div>
+
+  <div>
+    <p>{{animal.description}}</p>
+  </div>
+</div>

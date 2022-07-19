@@ -10,7 +10,11 @@ import { BehaviorSubject } from 'rxjs';
 export class UserService {
   private userSubject = new BehaviorSubject<User>({});
 
-  constructor(private tokenService: TokenService) {}
+  constructor(private tokenService: TokenService) {
+    if (this.tokenService.accessTokenExists()) {
+      this.decodeJTW();
+    }
+  }
 
   private decodeJTW() {
     const token = this.tokenService.getAccessToken();

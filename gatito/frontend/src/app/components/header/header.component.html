@@ -5,7 +5,8 @@
       <div *ngIf="user.name; else login">
         <a>{{user.name}}</a>
 
-        <button (click)="logout" class="rounded px-3 py-2">Logout</button>
+        <button (click)="logout()"
+          class="px-3 py-2 rounded bg-purple-50 text-xl text-purple-500 border-spacing-1 border-purple-700 hover:bg-purple-800 hover:text-purple-50 transition-colors ml-3">Logout</button>
       </div>
     </div>
   </nav>
