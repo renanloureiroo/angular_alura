@@ -1,1 +1,17 @@
 <p *ngIf="!animals.length">Desculpe não há animais</p>
+
+<div class="flex flex-wrap justify-around py-4 px-3 gap-3">
+  <div *ngFor="let animal of animals">
+    <a [routerLink]="['/animals', animal.id]">
+      <app-card [title]="animal.description">
+        <app-animal [url]="animal.url" [description]="animal.description"></app-animal>
+        <div class="flex items-center space-x-3">
+
+          <span>{{animal.likes}}</span>
+
+          <span>{{animal.comments}}</span>
+        </div>
+      </app-card>
+    </a>
+  </div>
+</div>
